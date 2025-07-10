@@ -1,81 +1,45 @@
 package com.generation;
-import java.util.Scanner;
+import java.util.Scanner; //importar scanner
 public class Codigo4 {
-    public class Main { //falta Main
+ //falta Main
         public static void main(String[] args) {
-            Scanner s = new Scanner(System.in);
+            Scanner s = new Scanner(System.in); //para recibir valores System.in
 
             System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-            String j1 = s.nextLine();
+            String j1 = s.nextLine().toLowerCase;
 
             System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-            //Scanner s2 = new Scanner();
-            String j2 = s.nextLine();
+            //Scanner s2 = new Scanner(System.in); no se necesitan 2 scanner
 
-            if (j1.equals(j2)) { //aniadir equals porque son strings
+            String j2 = s.nextLine().toLowerCase; //se llama la segunda variable correctamente
+
+            if (j1==j2) { //sobra un )
                 System.out.println("Empate");
             } else {
                 int g = 2;
-                switch(j1) {
+                switch(j1) { //.toLowerCase() para cambiar todo a minusculas y poder usar equals
                     case "piedra":
-                        if (j2.equals("tijeras")){
+                        if (j2.equals("tijeras")){ //equals compara strings
                             g = 1;
                         }
+                        break; //faltaba
 
                     case "papel":
-                        if (j2.equals ("piedra")) {
+                        if (j2.equals("piedra")) {
                             g = 1;
                         } //faltaba cerrar {} del caso papel
-                    case "tijera":
+                        break;
+                    case "tijeras": //falta s
                         if (j2.equals("papel")){
                             g = 1;
                         }
                         break;
-                    default:
+                    //default: g=2; // gana el jugador 2, se puede omitir
                 }
-                System.out.println("Gana el jugador " + g);
-            }
+            System.out.println("Gana el jugador " + g);    
+            } //scanner.close(); //cerrar scanner opcional
+           
 
         }
 
     }
-}
-
-    /*
-    public class Codigo4 {
-import java.util.Scanner;Scanner s = new Scanner();
-    
-    System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-    String j1 = s.nextLine();
-    
-    System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-    //Scanner s2 = new Scanner();
-    String j2 = s.nextLine();
-    
-    if (j1 == j2)) {
-      System.out.println("Empate");
-    } else {
-      int g = 2;
-      switch(j1) {
-        case "piedra":
-          if (j2 == "tijeras") {
-            g = 1;
-          }
-
-        case "papel":
-          if (j2 == "piedra") {
-            g = 1;
-          
-        case "tijera":
-          if (j2.equals("papel")) {
-            g = 1;
-          }
-          break;
-              default: ("Intenta otra vez")
-      }
-      System.out.println("Gana el jugador " + g);
-    }
-  
-    }
-}
-*/
