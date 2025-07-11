@@ -1,45 +1,38 @@
-package com.generation;
-import java.util.Scanner; //importar scanner
-public class Codigo4 {
- //falta Main
-        public static void main(String[] args) {
-            Scanner s = new Scanner(System.in); //para recibir valores System.in
-
-            System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-            String j1 = s.nextLine().toLowerCase;
-
-            System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-            //Scanner s2 = new Scanner(System.in); no se necesitan 2 scanner
-
-            String j2 = s.nextLine().toLowerCase; //se llama la segunda variable correctamente
-
-            if (j1==j2) { //sobra un )
-                System.out.println("Empate");
-            } else {
-                int g = 2;
-                switch(j1) { //.toLowerCase() para cambiar todo a minusculas y poder usar equals
-                    case "piedra":
-                        if (j2.equals("tijeras")){ //equals compara strings
-                            g = 1;
-                        }
-                        break; //faltaba
-
-                    case "papel":
-                        if (j2.equals("piedra")) {
-                            g = 1;
-                        } //faltaba cerrar {} del caso papel
-                        break;
-                    case "tijeras": //falta s
-                        if (j2.equals("papel")){
-                            g = 1;
-                        }
-                        break;
-                    //default: g=2; // gana el jugador 2, se puede omitir
-                }
-            System.out.println("Gana el jugador " + g);    
-            } //scanner.close(); //cerrar scanner opcional
-           
-
-        }
-
+/**
+ * El programa genera 20 numeros con Math.random (del rango de 1 al 381) y los guarda en array de tamaño 20,
+ * Imprime dichos numeros, y pide al usuario que elija que numeros resaltar, si los multiplos
+ * de 5 o de 7, realiza la evaluacion del cada uno de los numeros mediante el uso del modulo seleccionado
+ * por el usuario, y finalmente vuelve a imprimir el arreglo pero señalando con corchetes los multiplos del
+ * multiplo anteriormente seleccionado
+ */
+public class Codigo6 {
+	  public static void main(String[] args) {
+       //Falta de operador new
+        int[] n = new int[20];
+        //Correccion de la iteración
+	    for (int i = 0; i < 20; i++) {
+	      n[i] = (int)(Math.random() * 381) + 20;
+	      //faltaba out
+          System.out.print(n[i] + " ");
+	    }
+	    //Cambio de printl a printf debido que cuenta con secuencia de escape
+	    System.out.printf("\n¿Qué números quiere resaltar? ");
+	    //Cambio de los simbolos unicode de guiones, por guiones normales 
+        System.out.print("(1 - los múltiplos de 5, 2 - los múltiplos de 7): ");
+	    //falta parentesis
+        int opcion = Integer.parseInt(System.console().readLine());
+        //Arreglo del escope para la evaluación en una linea
+	    int multiplo = ((opcion == 1) ? 5 : 7);
+        //Correccion es un foreach pero la sintaxis es diferente
+	    for(int e : n) {
+	      if (e % multiplo == 0) {
+	        System.out.print("[" + e + "] ");
+            //Completado de if en sus llaves
+          }else {
+            //Cambio del metodo de System de in a out
+	        System.out.print(e + " ");
+	      }
+	    
+      }	  
     }
+}

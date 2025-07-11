@@ -1,45 +1,45 @@
-package com.generation;
-import java.util.Scanner; //importar scanner
-public class Codigo4 {
- //falta Main
-        public static void main(String[] args) {
-            Scanner s = new Scanner(System.in); //para recibir valores System.in
+/**
+ * Evaluamos un numero metido por el usario para saber si es un numero afortunado o no, 
+ * Mediante el uso de while e if, realiza la evaluacion del modulo de dicho numero con respecto a 10
+ * y compara el resultado con parametros predefinidos.
+ */
 
-            System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-            String j1 = s.nextLine().toLowerCase;
-
-            System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
-            //Scanner s2 = new Scanner(System.in); no se necesitan 2 scanner
-
-            String j2 = s.nextLine().toLowerCase; //se llama la segunda variable correctamente
-
-            if (j1==j2) { //sobra un )
-                System.out.println("Empate");
-            } else {
-                int g = 2;
-                switch(j1) { //.toLowerCase() para cambiar todo a minusculas y poder usar equals
-                    case "piedra":
-                        if (j2.equals("tijeras")){ //equals compara strings
-                            g = 1;
-                        }
-                        break; //faltaba
-
-                    case "papel":
-                        if (j2.equals("piedra")) {
-                            g = 1;
-                        } //faltaba cerrar {} del caso papel
-                        break;
-                    case "tijeras": //falta s
-                        if (j2.equals("papel")){
-                            g = 1;
-                        }
-                        break;
-                    //default: g=2; // gana el jugador 2, se puede omitir
-                }
-            System.out.println("Gana el jugador " + g);    
-            } //scanner.close(); //cerrar scanner opcional
-           
-
-        }
-
-    }
+import java.util.Scanner;
+public class Codigo5 {
+    //Inclusion del metodo main
+    public static void main(String[] args) {
+        //Adicion de donde lee las cosas el objeto scanner s
+        Scanner s = new Scanner(System.in);
+        //Cambio de comilla simple a comilla doble
+	    System.out.print("Introduzca un número: ");
+	    String ni = s.nextLine();
+        //Conversion de tipos de objeto, de String a int
+	    int c = Integer.parseInt(ni);
+        //ni;
+	    
+	    int afo = 0;
+	    int noAfo = 0;
+	    //Cambio de variable a comparar, en vez de ni a c
+	    while (c > 0) {
+            //Se quito el "cast"
+		  int digito = c % 10;
+	      if ((digito == 3) || (digito == 7) || (digito == 8) || (digito == 9)) {
+			afo++;
+	      } else {
+			noAfo++;
+			}
+		
+        //Cambio de prinln a println
+	    if (afo > noAfo) {
+	      System.out.println("El " + c + " es un número afortunado.");
+	    } else {
+	      System.out.println("El " + c + " no es un número afortunado.");
+	    }
+		//Cambio del scope de la operacion debido a que solamente se realizaba dentro del else, cuando el caso sera verdero, 
+		// se cicla infinitament el programa
+		c /= 10;
+	  }
+      //Ciere del scanner
+      s.close();
+    }	  
+}
